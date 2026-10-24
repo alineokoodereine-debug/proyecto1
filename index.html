@@ -15,6 +15,7 @@
     <a href="#services">Services ·</a>
     <a href="#config">Configurateur ·</a>
     <a href="#abonnements">Abonnements ·</a>
+    <a href="qui-sommes-nous.html">Qui sommes nous ·</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="btn-contact" href="#abonnements">Abonnements</a>
@@ -32,8 +33,7 @@
     <div class="hero-loc">Disponible à Libreville · Glass · Extension Port-Gentil</div>
   </div>
   <div class="hero-right">
-    <!-- FIX: verifica que en GitHub el archivo se llame exactamente a1.jpeg -->
-    <img src="a1.jpg" alt="Photo employée">
+    <img src="a1.jpeg" alt="Photo employée" onerror="this.src='a1.jpg'">
   </div>
 </section>
 
@@ -47,7 +47,6 @@
   </div>
 </section>
 
-<!-- CONFIGURATEUR MOVIDO AQUÍ - YA NO ABAJO -->
 <section style="padding:80px 0;background:var(--cream)" id="config">
   <div class="container">
     <div class="section-header"><h2>Configurez votre séjour</h2><p>Choisissez type, hébergement démo et services. Obligation de moyens.</p></div>
@@ -112,27 +111,89 @@
   </div>
 </section>
 
-<footer class="footer" id="contact"><div class="footer-bottom"><span>© 2026 L’Adresse SARL – Glass – 2.000.000 FCFA – MAGANGA Boris – +241 65 29 33 33</span><span>WhatsApp: +241 62 51 64 57</span></div></footer>
+<footer class="footer" id="contact"><div class="footer-bottom"><span>© 2026 L’Adresse SARL – Glass – 2.000.000 FCFA – MAGANGA Boris – +241 65 29 33 33</span><span>WhatsApp: +241 62 51 64 57 | magangabridge@gmail.com</span></div></footer>
 
 <script>
 const state={type:null,heberg:null,services:[]};
+let confType='standard';
+let budgetMode='proposition';
 const hebs=[{id:'a1',name:'Appartement Premium – Démo',cap:'2 pers • 65m²',img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},{id:'v1',name:'Villa Luxe – Démo',cap:'4-6 pers',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400'}];
 const servs=['Chauffeur','Chef privé','Guide','Excursion','Événement','Sécurité sur devis'];
-function render(n){document.querySelectorAll('.config-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.s==n));const body=document.getElementById('cfgBody');
-if(n==1){body.innerHTML=`<div class="config-grid">${['Courte','Prolongée','Business','Personnalisée'].map(t=>`<div class="opt ${state.type===t?'selected':''}" onclick="state.type='${t}';render(1)"><b>${t}</b></div>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(2)">Continuer →</button></div>`;}
-if(n==2){body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt ${state.heberg===h.id?'selected':''}" onclick="state.heberg='${h.id}';render(2)"><img src="${h.img}"><div><b>${h.name}</b><br><small>${h.cap}</small></div></div>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" onclick="render(1)">← Retour</button><button class="btn-gold" onclick="render(3)">Continuer →</button></div>`;}
-if(n==3){body.innerHTML=`<div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s}')">${s}</label>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(4)">Voir résumé →</button></div>`;}
-if(n==4){const heb=hebs.find(h=>h.id===state.heberg);body.innerHTML=`<p><b>Type:</b> ${state.type||'—'}<br><b>Hébergement:</b> ${heb?heb.name:'—'}<br><b>Services:</b> ${state.services.join(', ')||'—'}</p><button class="btn-gold" style="margin-top:20px;width:100%;border-radius:100px" onclick="sendWhatsApp('Demande Configurateur: Type '+state.type+' – Heberg '+state.heberg+' – Services '+state.services.join(','))">Envoyer par WhatsApp</button>`;}
+
+function render(n){
+  document.querySelectorAll('.config-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.s==n));
+  const body=document.getElementById('cfgBody');
+  if(!body) return;
+  if(n==1){
+    body.innerHTML=`<div class="config-grid">${['Courte','Prolongée','Business','Personnalisée'].map(t=>`<div class="opt ${state.type===t?'selected':''}" onclick="state.type='${t}';render(1)"><b>${t}</b></div>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(2)">Continuer →</button></div>`;
+  }
+  if(n==2){
+    body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt ${state.heberg===h.id?'selected':''}" onclick="state.heberg='${h.id}';render(2)"><img src="${h.img}"><div><b>${h.name}</b><br><small>${h.cap}</small></div></div>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" onclick="render(1)">← Retour</button><button class="btn-gold" onclick="render(3)">Continuer →</button></div>`;
+  }
+  if(n==3){
+    body.innerHTML=`<div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s}')">${s}</label>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(4)">Voir résumé →</button></div>`;
+  }
+  if(n==4){
+    const heb=hebs.find(h=>h.id===state.heberg);
+    const budgetVal = document.getElementById('budgetInput') ? document.getElementById('budgetInput').value : '';
+    body.innerHTML=`
+      <div style="margin-bottom:20px">
+        <p style="font-size:13px;font-weight:600;margin-bottom:10px">Comment souhaitez-vous organiser votre séjour ?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <label class="opt ${confType==='standard'?'selected':''}" onclick="setConf('standard')"><input type="radio" name="conf" ${confType==='standard'?'checked':''}> <b>Demande standard</b><br><small>Coordonnées pour organiser le séjour</small></label>
+          <label class="opt ${confType==='confidentielle'?'selected':''}" onclick="setConf('confidentielle')"><input type="radio" name="conf" ${confType==='confidentielle'?'checked':''}> <b>Demande confidentielle</b><br><small>Discrétion renforcée - autorisés uniquement</small></label>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px">Choisissez la demande confidentielle si vous souhaitez que votre séjour soit organisé avec une discrétion renforcée. Votre demande sera traitée uniquement par les personnes autorisées.</p>
+      </div>
+      <div style="margin-bottom:20px">
+        <p style="font-size:13px;font-weight:600;margin-bottom:10px">Comment souhaitez-vous définir votre budget ?</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <label class="opt ${budgetMode==='avec'?'selected':''}" onclick="setBudget('avec')"><input type="radio" name="budgetType" ${budgetMode==='avec'?'checked':''}> J’ai un budget en tête</label>
+          <label class="opt ${budgetMode==='proposition'?'selected':''}" onclick="setBudget('proposition')"><input type="radio" name="budgetType" ${budgetMode==='proposition'?'checked':''}> Proposition sur mesure</label>
+        </div>
+        <input id="budgetInput" type="number" placeholder="Ex: 250000 FCFA" value="${budgetVal}" style="display:${budgetMode==='avec'?'block':'none'};width:100%;margin-top:12px;padding:12px;border-radius:10px;border:1px solid var(--border)">
+      </div>
+      <div style="background:var(--navy);color:white;padding:20px;border-radius:16px;margin-bottom:20px">
+        <p><b>Type:</b> ${state.type||'—'}<br><b>Hébergement:</b> ${heb?heb.name:'—'}<br><b>Services:</b> ${state.services.join(', ')||'—'}<br><b>Modalité:</b> ${confType}<br><b>Budget:</b> ${budgetMode==='avec' ? (budgetVal||'à préciser')+' FCFA' : 'Sur devis'}</p>
+      </div>
+      <button class="btn-gold" style="width:100%;border-radius:100px" onclick="sendWhatsAppConfig()">Envoyer par WhatsApp</button>
+      <button style="width:100%;border-radius:100px;background:var(--navy);color:white;border:none;padding:14px;cursor:pointer;font-weight:600;margin-top:10px" onclick="sendMailConfig()">Envoyer par Gmail</button>
+      <small style="display:block;margin-top:10px;color:var(--muted)">Standard → Sheet équipe | Confidentielle → Sheet restreint Boris</small>
+    `;
+  }
 }
 function toggleS(s){if(state.services.includes(s))state.services=state.services.filter(x=>x!==s);else state.services.push(s);render(3)}
-document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s)));render(1);
+function setConf(v){confType=v; render(4)}
+function setBudget(v){budgetMode=v; const inp=document.getElementById('budgetInput'); if(inp) inp.style.display=v==='avec'?'block':'none'; render(4); setTimeout(()=>{const newInp=document.getElementById('budgetInput'); if(newInp) newInp.focus();},50)}
+
+function getResumeText(){
+  const heb=hebs.find(h=>h.id===state.heberg);
+  const budgetVal = document.getElementById('budgetInput') ? document.getElementById('budgetInput').value : '';
+  const budgetTxt = budgetMode==='avec' ? budgetVal+' FCFA' : 'Proposition sur mesure';
+  return `CONFIGURATEUR L’Adresse – Type:${state.type} – Heberg:${heb?heb.name:state.heberg} – Services:${state.services.join(',')} – Modalite:${confType} – Budget:${budgetTxt}`;
+}
+function sendWhatsAppConfig(){
+  const txt=getResumeText();
+  const prefix = confType==='confidentielle' ? '[CONFIDENTIELLE] ' : '[STANDARD] ';
+  window.open(`https://wa.me/24162516457?text=${encodeURIComponent(prefix+txt)}`,'_blank');
+}
+function sendMailConfig(){
+  const txt=getResumeText();
+  const subj=`${confType==='confidentielle' ? '[CONFIDENTIELLE]' : '[STANDARD]'} Demande Configurateur L’Adresse – ${state.type}`;
+  const body=`Bonjour L’Adresse,%0D%0A%0D%0A${encodeURIComponent(txt)}%0D%0A%0D%0AÀ traiter dans Sheet: ${confType}`;
+  window.location.href=`mailto:magangabridge@gmail.com?subject=${encodeURIComponent(subj)}&body=${body}`;
+}
+
+document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s)));
+render(1);
 function toggleInfo(btn){const extra=btn.nextElementSibling;const open=extra.style.display==='block';extra.style.display=open?'none':'block';btn.textContent=open?"Plus d'informations":"Moins d'informations";}
 function sendWhatsApp(typeAbo){const numero="24162516457";const msg=`Bonjour L’Adresse SARL, je souhaite obtenir plus d’informations et solliciter l’abonnement suivant: ${typeAbo}. Pouvez-vous me recontacter? Merci – Glass, Libreville.`;window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`,'_blank');}
 document.addEventListener('DOMContentLoaded',()=>{
   const scroll=document.getElementById('cardsScroll');const wrapper=document.querySelector('.cards-wrapper');
-  function check(){if(scroll.scrollWidth <= wrapper.clientWidth + 20){scroll.classList.add('is-centered');}else{scroll.classList.remove('is-centered');}}
+  function check(){if(!scroll||!wrapper) return; if(scroll.scrollWidth <= wrapper.clientWidth + 20){scroll.classList.add('is-centered');}else{scroll.classList.remove('is-centered');}}
   check();window.addEventListener('resize',check);
 });
 </script>
 </body>
 </html>
+   
