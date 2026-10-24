@@ -1,201 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <meta name="format-detection" content="telephone=no">
-<meta name="format-detection" content="email=no">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no">
 <title>L’Adresse SARL | L’art de l’hospitalité sur mesure</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
+<link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="top-header">
-  <div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div>
-  <nav class="nav">
-    <a href="#accueil">Accueil ·</a>
-    <a href="#services">Services ·</a>
-    <a href="#config">Configurateur ·</a>
-    <a href="#abonnements">Abonnements ·</a>
-    <a href="qui-sommes-nous.html">Qui sommes nous ·</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <a class="btn-contact" href="#abonnements">Abonnements</a>
-</header>
+<div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div>
+<nav class="nav"><a href="#accueil">Accueil ·</a><a href="#services">Services ·</a><a href="#abonnements">Abonnements ·</a><a href="qui-sommes-nous.html">Qui sommes nous ·</a><a href="#contact">Contact</a></nav>
+<a class="btn-contact" href="#abonnements">Abonnements</a></header>
 
 <section class="hero" id="accueil">
-  <div class="hero-left">
-    <h1>Conciergerie de Luxe</h1>
-    <div class="hero-sub">Votre temps, notre excellence.</div>
-    <p class="hero-desc">L’art de l’hospitalité sur mesure. Un seul interlocuteur, une organisation complète, une expérience sans compromis. Glass, Libreville – Capital 2.000.000 FCFA – Gérant MAGANGA Boris.</p>
-    <div class="hero-btns">
-      <button class="btn-gold" onclick="document.getElementById('config').scrollIntoView({behavior:'smooth'})">Demander une réservation</button>
-      <button class="btn-outline" onclick="document.getElementById('services-cards').scrollIntoView({behavior:'smooth'})">Découvrir les services</button>
-    </div>
-    <div class="hero-loc">Disponible à Libreville · Glass · Extension Port-Gentil</div>
-  </div>
-  <div class="hero-right">
-    <img src="a1.jpeg" alt="Photo employée" onerror="this.src='a1.jpg'">
-  </div>
-</section>
+<div class="hero-left"><h1>Conciergerie de Luxe</h1><div class="hero-sub">Votre temps, notre excellence.</div>
+<p class="hero-desc">L’art de l’hospitalité sur mesure. Un seul interlocuteur, une organisation complète, une expérience sans compromis. Glass, Libreville – Capital 2.000.000 FCFA – Gérant MAGANGA Boris.</p>
+<div class="hero-btns"><button class="btn-gold" onclick="document.getElementById('services-cards').scrollIntoView({behavior:'smooth'})">Demander une réservation</button>
+<button class="btn-outline" onclick="document.getElementById('services-cards').scrollIntoView({behavior:'smooth'})">Découvrir les services</button></div>
+<div class="hero-loc">Disponible à Libreville · Glass · Extension Port-Gentil</div></div>
+<div class="hero-right"><img src="a1.jpeg" onerror="this.src='a1.jpg'"></div></section>
 
-<section class="services-intro" id="services">
-  <small>Nos services</small>
-  <h2>Trois expertises dédiées à votre confort</h2>
-  <div class="services-grid-3">
-    <div class="svc3"><div class="icon"><img src="icon3.png" alt="Réservations"></div><h3>Réservations Privées</h3><p>Restaurants étoilés, hôtels d’exception. Commission hôtels 10-20% et villas 15% selon conditions, à confirmer.</p></div>
-    <div class="svc3"><div class="icon"><img src="icon1.png" alt="Événements"></div><h3>Événements & Expériences</h3><p>Soirées privées, accès VIP, excursions Gabon. Simple dès 50.000 FCFA, Premium 150.000, VIP 500.000 FCFA.</p></div>
-    <div class="svc3"><div class="icon"><img src="icon2.png" alt="Assistance"></div><h3>Assistance Personnelle</h3><p>Chauffeur berline 20.000 FCFA/j, SUV Premium 35.000 FCFA/j, heure supp 5.000 FCFA. Assistant dédié.</p></div>
-  </div>
-</section>
+<section class="services-intro" id="services"><small>Nos services</small><h2>Trois expertises dédiées à votre confort</h2>
+<div class="services-grid-3"><div class="svc3"><div class="icon"><img src="icon3.png"></div><h3>Réservations Privées</h3><p>Restaurants étoilés, hôtels d’exception. Commission hôtels 10-20% et villas 15% selon conditions.</p></div>
+<div class="svc3"><div class="icon"><img src="icon1.png"></div><h3>Événements & Expériences</h3><p>Soirées privées, accès VIP, excursions Gabon.</p></div>
+<div class="svc3"><div class="icon"><img src="icon2.png"></div><h3>Assistance Personnelle</h3><p id="prix-accueil">Chauffeur berline 20.000 FCFA/j, SUV Premium 35.000 FCFA/j.</p></div></div></section>
 
-<section style="padding:80px 0;background:var(--cream)" id="config">
-  <div class="container">
-    <div class="section-header"><h2>Configurez votre séjour</h2><p>Choisissez type, hébergement démo et services. Obligation de moyens.</p></div>
-    <div class="config-wrap">
-      <div class="config-tabs"><button class="active" data-s="1">1. Type séjour</button><button data-s="2">2. Hébergement démo</button><button data-s="3">3. Services</button><button data-s="4">4. Résumé</button></div>
-      <div class="config-body" id="cfgBody"></div>
-    </div>
-  </div>
-</section>
+<section class="section-cards" id="services-cards"><div class="section-header"><h2>Exclusive access – Nos services détaillés</h2><p>Cliquez sur Voir plus pour accéder à la page dédiée.</p></div>
+<div class="cards-wrapper"><div class="cards-scroll is-centered" id="cardsScroll">
+<div class="q-card"><div class="q-card-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600"></div><div class="q-card-body"><h3>Conciergerie personnalisée</h3><p>Gestion quotidienne, demandes spéciales, assistance WhatsApp.</p><button class="q-btn" onclick="window.location.href='service-conciergerie.html'">Voir plus</button></div></div>
+<div class="q-card"><div class="q-card-img"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"></div><div class="q-card-body"><h3>Exclusive access – Séjours</h3><p>Exemples démo non gérés, dispo à confirmer. Accueil aéroport dès 25.000 FCFA.</p><button class="q-btn" onclick="window.location.href='service-sejours.html'">Voir plus</button></div></div>
+<div class="q-card"><div class="q-card-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600"></div><div class="q-card-body"><h3>Mobilité & Chauffeur privé</h3><p>Transferts, véhicules prestige sur devis, discrétion absolue.</p><button class="q-btn" onclick="window.location.href='service-mobilite.html'">Voir plus</button></div></div>
+</div></div></section>
 
-<section class="section-cards" id="services-cards">
-  <div class="section-header">
-    <span class="badge-demo">Div inspiré référence 2 Quintessentially</span>
-    <h2>Exclusive access – Nos services détaillés</h2>
-    <p>Cliquez sur Voir plus pour accéder à la page dédiée avec configurateur filtré.</p>
-  </div>
-  <div class="cards-wrapper">
-    <div class="cards-scroll is-centered" id="cardsScroll">
-      <div class="q-card"><div class="q-card-img"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600"></div><div class="q-card-body"><h3>Conciergerie personnalisée</h3><p>Gestion quotidienne, demandes spéciales, assistance WhatsApp.</p><button class="q-btn" onclick="window.location.href='service-conciergerie.html'">Voir plus</button></div></div>
-      <div class="q-card"><div class="q-card-img"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600"></div><div class="q-card-body"><h3>Exclusive access – Séjours</h3><p>Exemples démo non gérés, dispo à confirmer. Accueil aéroport dès 25.000 FCFA.</p><button class="q-btn" onclick="window.location.href='service-sejours.html'">Voir plus</button></div></div>
-      <div class="q-card"><div class="q-card-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600"></div><div class="q-card-body"><h3>Mobilité & Chauffeur privé</h3><p>Transferts, véhicules prestige sur devis, discrétion absolue.</p><button class="q-btn" onclick="window.location.href='service-mobilite.html'">Voir plus</button></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="abonnements-section" id="abonnements">
-  <div class="container">
-    <div class="abonnement-intro">
-      <small>XI. ABONNEMENTS – PDF Officiel p.20</small>
-      <h2>Nos cartes d'abonnement</h2>
-      <p>Les frais de conciergerie sont distincts des prestations achetées pour le compte du client. Tarifs exprimés en FCFA.</p>
-    </div>
-    <div class="abonnement-grid">
-      <div class="abonnement-card">
-        <div class="abonnement-top"><span class="badge-abonnement">Mensuel</span><h3>Carte Premium</h3><div class="price-abonnement">75.000 <small>FCFA / mois</small></div></div>
-        <ul class="abonnement-list"><li>Priorité sur réservations</li><li>Assistance dédiée WhatsApp</li><li>Offres partenaires négociées</li><li>1 accueil aéroport/mois offert</li></ul>
-        <button class="btn-info" onclick="toggleInfo(this)">Plus d'informations</button>
-        <div class="info-extra"><p><b>Détails PDF p.20 + Club Silver 250.000 FCFA/an p.78:</b> 5 demandes/mois, chauffeur berline 20.000 FCFA/j préférentiel.</p></div>
-        <button class="btn-whatsapp" onclick="sendWhatsApp('Carte Premium – 75.000 FCFA/mois')">Demander cet abonnement</button>
-      </div>
-      <div class="abonnement-card featured">
-        <div class="abonnement-top"><span class="badge-abonnement gold">Le plus demandé</span><h3>Carte Luxe</h3><div class="price-abonnement">250.000 <small>FCFA / mois</small></div></div>
-        <ul class="abonnement-list"><li>Concierge dédié</li><li>Accès événements privés</li><li>Avantages renforcés hôtels/villas</li><li>2 accueils + organisation simple offerte</li><li>15 demandes/mois</li></ul>
-        <button class="btn-info" onclick="toggleInfo(this)">Plus d'informations</button>
-        <div class="info-extra"><p><b>Détails PDF p.20 + Gold 750.000 FCFA/an p.78:</b> Coordination business dès 100.000 FCFA, commissions hôtels 10-20% maintenues.</p></div>
-        <button class="btn-whatsapp" onclick="sendWhatsApp('Carte Luxe – 250.000 FCFA/mois')">Demander cet abonnement</button>
-      </div>
-      <div class="abonnement-card">
-        <div class="abonnement-top"><span class="badge-abonnement dark">Ultra VIP – Sur invitation</span><h3>Carte Prestige</h3><div class="price-abonnement">750.000 <small>FCFA / mois</small></div></div>
-        <ul class="abonnement-list"><li>Service ultra-personnalisé 24/7</li><li>Disponibilité prioritaire</li><li>Yacht, jet, sécurité sur devis</li><li>Organisation Premium offerte</li><li>Assistant dédié</li></ul>
-        <button class="btn-info" onclick="toggleInfo(this)">Plus d'informations</button>
-        <div class="info-extra"><p><b>Détails PDF p.20 + Black sur invitation p.78:</b> Service ultra-personnalisé, prestations exclusives.</p></div>
-        <button class="btn-whatsapp" onclick="sendWhatsApp('Carte Prestige – 750.000 FCFA/mois – Sur invitation')">Demander cet abonnement</button>
-      </div>
-    </div>
-    <div class="abonnement-cta-final">
-      <h3>Vous avez parcouru toutes nos formules?</h3>
-      <p>Laissez-nous vous conseiller la carte adaptée à votre rythme de vie à Glass, Libreville.</p>
-      <button class="btn-gold-large" onclick="sendWhatsApp('Demande générale abonnement – besoin de conseil')">Solliciter un abonnement sur WhatsApp</button>
-      <small style="display:block;margin-top:12px;opacity:0.6">Redirection directe vers WhatsApp L’Adresse: +241 62 51 64 57</small>
-    </div>
-  </div>
-</section>
-
-<footer class="footer" id="contact"><div class="footer-bottom"><span>© 2026 L’Adresse SARL – Glass – 2.000.000 FCFA – MAGANGA Boris – +241 65 29 33 33</span><span>WhatsApp: +241 62 51 64 57 | magangabridge@gmail.com</span></div></footer>
+<section class="abonnements-section" id="abonnements"><div class="container"><div class="abonnement-intro"><small>XI. ABONNEMENTS – PDF Officiel p.20</small><h2>Nos cartes d'abonnement</h2><p id="abos-desc">Les frais de conciergerie sont distincts des prestations achetées pour le compte du client.</p></div>
+<div class="abonnement-grid" id="abosGrid">Chargement des abonnements depuis Google Sheet...</div></div></section>
+<footer class="footer" id="contact"><div class="footer-bottom"><span>© 2026 L’Adresse SARL</span><span>WhatsApp: +241 62 51 64 57</span></div></footer>
 
 <script>
-const state={type:null,heberg:null,services:[]};
-let confType='standard';
-let budgetMode='proposition';
-const hebs=[{id:'a1',name:'Appartement Premium – Démo',cap:'2 pers • 65m²',img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},{id:'v1',name:'Villa Luxe – Démo',cap:'4-6 pers',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400'}];
-const servs=['Chauffeur','Chef privé','Guide','Excursion','Événement','Sécurité sur devis'];
-
-function render(n){
-  document.querySelectorAll('.config-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.s==n));
-  const body=document.getElementById('cfgBody');
-  if(!body) return;
-  if(n==1){
-    body.innerHTML=`<div class="config-grid">${['Courte','Prolongée','Business','Personnalisée'].map(t=>`<div class="opt ${state.type===t?'selected':''}" onclick="state.type='${t}';render(1)"><b>${t}</b></div>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(2)">Continuer →</button></div>`;
-  }
-  if(n==2){
-    body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt ${state.heberg===h.id?'selected':''}" onclick="state.heberg='${h.id}';render(2)"><img src="${h.img}"><div><b>${h.name}</b><br><small>${h.cap}</small></div></div>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" onclick="render(1)">← Retour</button><button class="btn-gold" onclick="render(3)">Continuer →</button></div>`;
-  }
-  if(n==3){
-    body.innerHTML=`<div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s}')">${s}</label>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(4)">Voir résumé →</button></div>`;
-  }
-  if(n==4){
-    const heb=hebs.find(h=>h.id===state.heberg);
-    const budgetVal = document.getElementById('budgetInput') ? document.getElementById('budgetInput').value : '';
-    body.innerHTML=`
-      <div style="margin-bottom:20px">
-        <p style="font-size:13px;font-weight:600;margin-bottom:10px">Comment souhaitez-vous organiser votre séjour ?</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <label class="opt ${confType==='standard'?'selected':''}" onclick="setConf('standard')"><input type="radio" name="conf" ${confType==='standard'?'checked':''}> <b>Demande standard</b><br><small>Coordonnées pour organiser le séjour</small></label>
-          <label class="opt ${confType==='confidentielle'?'selected':''}" onclick="setConf('confidentielle')"><input type="radio" name="conf" ${confType==='confidentielle'?'checked':''}> <b>Demande confidentielle</b><br><small>Discrétion renforcée - autorisés uniquement</small></label>
-        </div>
-        <p style="font-size:11px;color:var(--muted);margin-top:8px">Choisissez la demande confidentielle si vous souhaitez que votre séjour soit organisé avec une discrétion renforcée. Votre demande sera traitée uniquement par les personnes autorisées.</p>
-      </div>
-      <div style="margin-bottom:20px">
-        <p style="font-size:13px;font-weight:600;margin-bottom:10px">Comment souhaitez-vous définir votre budget ?</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <label class="opt ${budgetMode==='avec'?'selected':''}" onclick="setBudget('avec')"><input type="radio" name="budgetType" ${budgetMode==='avec'?'checked':''}> J’ai un budget en tête</label>
-          <label class="opt ${budgetMode==='proposition'?'selected':''}" onclick="setBudget('proposition')"><input type="radio" name="budgetType" ${budgetMode==='proposition'?'checked':''}> Proposition sur mesure</label>
-        </div>
-        <input id="budgetInput" type="number" placeholder="Ex: 250000 FCFA" value="${budgetVal}" style="display:${budgetMode==='avec'?'block':'none'};width:100%;margin-top:12px;padding:12px;border-radius:10px;border:1px solid var(--border)">
-      </div>
-      <div style="background:var(--navy);color:white;padding:20px;border-radius:16px;margin-bottom:20px">
-        <p><b>Type:</b> ${state.type||'—'}<br><b>Hébergement:</b> ${heb?heb.name:'—'}<br><b>Services:</b> ${state.services.join(', ')||'—'}<br><b>Modalité:</b> ${confType}<br><b>Budget:</b> ${budgetMode==='avec' ? (budgetVal||'à préciser')+' FCFA' : 'Sur devis'}</p>
-      </div>
-      <button class="btn-gold" style="width:100%;border-radius:100px" onclick="sendWhatsAppConfig()">Envoyer par WhatsApp</button>
-      <button style="width:100%;border-radius:100px;background:var(--navy);color:white;border:none;padding:14px;cursor:pointer;font-weight:600;margin-top:10px" onclick="sendMailConfig()">Envoyer par Gmail</button>
-      <small style="display:block;margin-top:10px;color:var(--muted)">Standard → Sheet équipe | Confidentielle → Sheet restreint Boris</small>
-    `;
-  }
+const SHEET_URL="https://script.google.com/macros/s/AKfycbww-7Nn7ro4OZ-R1oVuoLSdY6P7OWOHJzLl0I4KNazjOXjGYWlmxFzpq-ti7sHGA2zP/exec";
+async function loadAbos(){
+ try{
+  const res=await fetch(SHEET_URL+"?type=abonnements"); const data=await res.json();
+  if(!data.length) return;
+  document.getElementById('abosGrid').innerHTML=data.filter(a=>String(a.actif).toLowerCase()==='oui').map(a=>`
+   <div class="abonnement-card ${a.badge&&a.badge.includes('demandé')?'featured':''}"><div class="abonnement-top"><span class="badge-abonnement">${a.badge||''}</span><h3>${a.nom}</h3><div class="price-abonnement">${a.prix} <small>FCFA / ${a.periode}</small></div></div>
+   <ul class="abonnement-list">${String(a['Fonctionnalités | Avantages']||'').split('|').map(f=>`<li>${f}</li>`).join('')}</ul>
+   <button class="btn-whatsapp" onclick="window.open('https://wa.me/24162516457?text='+encodeURIComponent('Demande abo: '+a.nom))">Demander cet abonnement</button></div>`).join('');
+ }catch(e){console.log(e)}
 }
-function toggleS(s){if(state.services.includes(s))state.services=state.services.filter(x=>x!==s);else state.services.push(s);render(3)}
-function setConf(v){confType=v; render(4)}
-function setBudget(v){budgetMode=v; const inp=document.getElementById('budgetInput'); if(inp) inp.style.display=v==='avec'?'block':'none'; render(4); setTimeout(()=>{const newInp=document.getElementById('budgetInput'); if(newInp) newInp.focus();},50)}
-
-function getResumeText(){
-  const heb=hebs.find(h=>h.id===state.heberg);
-  const budgetVal = document.getElementById('budgetInput') ? document.getElementById('budgetInput').value : '';
-  const budgetTxt = budgetMode==='avec' ? budgetVal+' FCFA' : 'Proposition sur mesure';
-  return `CONFIGURATEUR L’Adresse – Type:${state.type} – Heberg:${heb?heb.name:state.heberg} – Services:${state.services.join(',')} – Modalite:${confType} – Budget:${budgetTxt}`;
-}
-function sendWhatsAppConfig(){
-  const txt=getResumeText();
-  const prefix = confType==='confidentielle' ? '[CONFIDENTIELLE] ' : '[STANDARD] ';
-  window.open(`https://wa.me/24162516457?text=${encodeURIComponent(prefix+txt)}`,'_blank');
-}
-function sendMailConfig(){
-  const txt=getResumeText();
-  const subj=`${confType==='confidentielle' ? '[CONFIDENTIELLE]' : '[STANDARD]'} Demande Configurateur L’Adresse – ${state.type}`;
-  const body=`Bonjour L’Adresse,%0D%0A%0D%0A${encodeURIComponent(txt)}%0D%0A%0D%0AÀ traiter dans Sheet: ${confType}`;
-  window.location.href=`mailto:magangabridge@gmail.com?subject=${encodeURIComponent(subj)}&body=${body}`;
-}
-
-document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s)));
-render(1);
-function toggleInfo(btn){const extra=btn.nextElementSibling;const open=extra.style.display==='block';extra.style.display=open?'none':'block';btn.textContent=open?"Plus d'informations":"Moins d'informations";}
-function sendWhatsApp(typeAbo){const numero="24162516457";const msg=`Bonjour L’Adresse SARL, je souhaite obtenir plus d’informations et solliciter l’abonnement suivant: ${typeAbo}. Pouvez-vous me recontacter? Merci – Glass, Libreville.`;window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`,'_blank');}
-document.addEventListener('DOMContentLoaded',()=>{
-  const scroll=document.getElementById('cardsScroll');const wrapper=document.querySelector('.cards-wrapper');
-  function check(){if(!scroll||!wrapper) return; if(scroll.scrollWidth <= wrapper.clientWidth + 20){scroll.classList.add('is-centered');}else{scroll.classList.remove('is-centered');}}
-  check();window.addEventListener('resize',check);
-});
-</script>
-</body>
-</html>
-   
+loadAbos();
+</script></body></html>
