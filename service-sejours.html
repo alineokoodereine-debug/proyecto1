@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sejours - L’Adresse SARL</title>
+<title>Séjours - L’Adresse SARL</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top-header"><div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div><a class="btn-contact" href="index.html">← Retour Accueil</a></header>
-<section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Exclusive access - Sejours</h1><div class="hero-sub">Appartements Premium & Villas demo - disponibilite a confirmer</div><p class="hero-desc">Accueil aeroport des 25.000 FCFA. Commission hotels 10-20%, villas 15%. L’Adresse intermediaire, obligation de moyens.</p></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"></div></section>
-<section style="padding:80px 0;background:var(--cream)" id="config"><div class="container"><div class="section-header"><h2>Configurez votre sejour</h2><p>Choisissez le type et les options. Envoi final par WhatsApp ou Gmail.</p></div><div class="config-wrap"><div class="config-tabs"><button class="active" data-s="1">1. Type</button><button data-s="2">2. Hebergement</button><button data-s="3">3. Options</button><button data-s="4">4. Resume</button></div><div class="config-body" id="cfgBody"></div></div></div></section>
-<footer class="footer"><div class="footer-bottom"><span>© 2026 L’Adresse SARL - Glass</span><span>WhatsApp: +241 62 51 64 57</span></div></footer>
+<section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Exclusive access - Séjours</h1><div class="hero-sub">Appartements Premium & Villas démo - disponibilité à confirmer</div><p class="hero-desc">Accueil aéroport dès 25.000 FCFA. L’Adresse intermédiaire, obligation de moyens.</p></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"></div></section>
+<section style="padding:80px 0;background:var(--cream)"><div class="container"><div class="config-wrap"><div class="config-tabs"><button class="active" data-s="1">1. Type</button><button data-s="2">2. Hébergement</button><button data-s="3">3. Personnaliser</button><button data-s="4">4. Demande</button></div><div class="config-body" id="cfgBody"></div></div></div></section>
+<footer class="footer"><div class="footer-bottom"><span>© 2026 L’Adresse – Glass</span><span>WhatsApp +241 62 51 64 57 – Assistance médicale incluse</span></div></footer>
 <script>
-const state={type:null,heberg:null,services:[]};
-const hebs=[
-{id:'a1',name:'Appartement Premium - Demo',cap:'2 pers - 65m2',img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
-{id:'v1',name:'Villa Luxe - Demo',cap:'4-6 pers',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400'}
-];
-const servs=['Accueil aeroport 25000 FCFA','Chef prive','Menage quotidien','Securite sur devis'];
-function render(n){
-  document.querySelectorAll('.config-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.s==n));
-  const body=document.getElementById('cfgBody');
-  if(!body) return;
-  if(n==1){
-    body.innerHTML=`<div class="config-grid">${['Courte','Prolongee','Business','Personnalisee'].map(t=>`<div class="opt ${state.type===t?'selected':''}" onclick="state.type='${t}';render(1)"><b>${t}</b></div>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(2)">Continuer →</button></div>`;
-  }
-  if(n==2){
-    body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt ${state.heberg===h.id?'selected':''}" onclick="state.heberg='${h.id}';render(2)"><img src="${h.img}"><div><b>${h.name}</b><br><small>${h.cap}</small></div></div>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" onclick="render(1)">← Retour</button><button class="btn-gold" onclick="render(3)">Continuer →</button></div>`;
-  }
-  if(n==3){
-    body.innerHTML=`<div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s}')">${s}</label>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(4)">Voir resume →</button></div>`;
-  }
-  if(n==4){
-    const heb=hebs.find(h=>h.id===state.heberg);
-    body.innerHTML=`<p><b>Type:</b> ${state.type||'—'}<br><b>Hebergement:</b> ${heb?heb.name:'—'}<br><b>Options:</b> ${state.services.join(', ')||'—'}</p><button class="btn-gold" style="margin-top:20px;width:100%;border-radius:100px" onclick="sendWA()">Envoyer par WhatsApp</button><button style="margin-top:10px;width:100%;border-radius:100px;background:var(--navy);color:white;border:none;padding:14px;cursor:pointer;font-weight:600" onclick="sendMail()">Envoyer par Gmail</button>`;
-  }
+const state={type:null,heberg:null,services:[],conf:'standard',budget:'proposition',budgetVal:'',nom:'',tel:'',membres:'',securite:'',cuisine:'',prefCul:'non'};
+const hebs=[{id:'a1',name:'Appartement Premium – Démo',cap:'2 pers • 65m²',img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},{id:'v1',name:'Villa Luxe – Démo',cap:'4-6 pers',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400'}];
+const servs=['Chauffeur privé','Location voiture','Chef privé','Guide touristique','Activités','Sécurité privée'];
+function render(n){document.querySelectorAll('.config-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.s==n));const body=document.getElementById('cfgBody');if(!body)return;
+if(n==1){body.innerHTML=`<div class="config-grid">${['Courte','Prolongée','Business','Personnalisée'].map(t=>`<div class="opt ${state.type===t?'selected':''}" onclick="state.type='${t}';render(1)"><b>${t}</b></div>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(2)">Continuer →</button></div>`;}
+if(n==2){body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt ${state.heberg===h.id?'selected':''}" onclick="state.heberg='${h.id}';render(2)"><img src="${h.img}"><div><b>${h.name}</b><br><small>${h.cap}</small></div></div>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" onclick="render(1)">← Retour</button><button class="btn-gold" onclick="render(3)">Personnaliser →</button></div>`;}
+if(n==3){
+body.innerHTML=`
+<div style="background:var(--navy);color:white;padding:16px;border-radius:12px;margin-bottom:20px;font-size:13px">Personnalisez votre séjour — Sélectionnez les services qui vous intéressent. Vous pourrez les confirmer avec notre équipe. <br><b style="color:var(--gold-light)">✓ Assistance médicale incluse par L’Adresse et ses partenaires agréés.</b></div>
+<div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s}')">${s}</label>`).join('')}</div>
+<div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(4)">Continuer vers la demande →</button></div>`;}
+if(n==4){
+const heb=hebs.find(h=>h.id===state.heberg);
+body.innerHTML=`
+<div style="margin-bottom:16px;background:#f7f3ef;padding:12px;border-radius:10px"><small>Sélection actuelle:</small><br><b>${state.type||'—'} • ${heb?heb.name:'—'} • ${state.services.join(', ')||'Aucun'}</b></div>
+<p style="font-weight:600;font-size:13px">Comment souhaitez-vous organiser votre séjour ?</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0">
+<label class="opt ${state.conf==='standard'?'selected':''}" onclick="state.conf='standard';render(4)"><input type="radio" ${state.conf==='standard'?'checked':''}> Demande standard</label>
+<label class="opt ${state.conf==='confidentielle'?'selected':''}" onclick="state.conf='confidentielle';render(4)"><input type="radio" ${state.conf==='confidentielle'?'checked':''}> Demande confidentielle</label>
+</div>
+${state.conf==='standard'?`
+<input id="nom" placeholder="Votre nom complet" value="${state.nom}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px">
+<input id="tel" placeholder="Téléphone +241..." value="${state.tel}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px">
+<input id="membres" placeholder="Nombre de membres / voyageurs" value="${state.membres}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px">
+`:`
+<input id="tel" placeholder="Téléphone uniquement (confidentiel)" value="${state.tel}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px">
+<small style="color:var(--muted)">En mode confidentiel, seul votre numéro est requis pour le contact initial.</small>
+`}
+${state.services.includes('Sécurité privée')?`
+<div style="margin:12px 0"><label style="font-size:13px;font-weight:600">Niveau de sécurité souhaité</label><select id="securite" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-top:6px"><option>1 garde</option><option>2 gardes</option><option>Escorte policière</option><option>Personnalisé</option></select><input id="securiteTxt" placeholder="Décrivez votre besoin si Personnalisé" style="width:100%;padding:10px;margin-top:8px;border-radius:10px;border:1px solid var(--border)"></div>`:''}
+${state.services.includes('Chef privé')?`
+<div style="margin:12px 0"><label style="font-size:13px;font-weight:600">Préférence culinaire ?</label><div style="display:flex;gap:10px;margin-top:6px"><label class="opt ${state.prefCul==='non'?'selected':''}" onclick="state.prefCul='non';render(4)"><input type="radio" ${state.prefCul==='non'?'checked':''}> Non</label><label class="opt ${state.prefCul==='oui'?'selected':''}" onclick="state.prefCul='oui';render(4)"><input type="radio" ${state.prefCul==='oui'?'checked':''}> Oui</label></div>${state.prefCul==='oui'?`<input id="cuisine" placeholder="Ex: sans sel, halal, vegan..." value="${state.cuisine}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-top:8px">`:''}</div>`:''}
+<p style="font-weight:600;font-size:13px;margin-top:14px">Budget</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="opt ${state.budget==='proposition'?'selected':''}" onclick="state.budget='proposition';render(4)"><input type="radio" ${state.budget==='proposition'?'checked':''}> Proposition sur mesure</label><label class="opt ${state.budget==='avec'?'selected':''}" onclick="state.budget='avec';render(4)"><input type="radio" ${state.budget==='avec'?'checked':''}> J’ai un budget</label></div>${state.budget==='avec'?`<input id="budgetVal" placeholder="Ex: 500000 FCFA" value="${state.budgetVal}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-top:8px">`:''}
+<button class="btn-gold" style="width:100%;border-radius:100px;margin-top:18px" onclick="collect();sendWA()">Envoyer par WhatsApp</button>
+<button style="width:100%;border-radius:100px;background:var(--navy);color:white;border:none;padding:14px;font-weight:600;margin-top:8px;cursor:pointer" onclick="collect();sendMail()">Envoyer par Gmail</button>
+`;
+}
 }
 function toggleS(s){if(state.services.includes(s))state.services=state.services.filter(x=>x!==s);else state.services.push(s);render(3)}
-function sendWA(){const txt=`Bonjour L’Adresse, demande SEJOURS - Type:${state.type} - Heberg:${state.heberg} - Options:${state.services.join(',')}`;window.open(`https://wa.me/24162516457?text=${encodeURIComponent(txt)}`,'_blank')}
-function sendMail(){const subj=`Demande Sejours L’Adresse - ${state.type}`;const body=`Bonjour L’Adresse,%0D%0AType:${state.type}%0D%0AHebergement:${state.heberg}%0D%0AOptions:${state.services.join(',')}`;window.location.href=`mailto:magangabridge@gmail.com?subject=${subj}&body=${body}`}
+function collect(){['nom','tel','membres','cuisine','budgetVal'].forEach(id=>{const el=document.getElementById(id); if(el) state[id==='budgetVal'?'budgetVal':id]=el.value;}); const sec=document.getElementById('securite'); if(sec) state.securite=sec.value+(document.getElementById('securiteTxt')?.value?' - '+document.getElementById('securiteTxt').value:'');}
+function buildTxt(){const heb=hebs.find(h=>h.id===state.heberg);return `SEJOURS – Type:${state.type} – Heberg:${heb?heb.name:state.heberg} – Services:${state.services.join(',')} – Conf:${state.conf} – Nom:${state.nom} – Tel:${state.tel} – Membres:${state.membres} – Securite:${state.securite} – Cuisine:${state.prefCul} ${state.cuisine} – Budget:${state.budget} ${state.budgetVal}`;}
+function sendWA(){const prefix=state.conf==='confidentielle'?'[CONFIDENTIELLE] ':'';window.open(`https://wa.me/24162516457?text=${encodeURIComponent(prefix+buildTxt())}`,'_blank');}
+function sendMail(){const subj=`${state.conf==='confidentielle'?'[CONFIDENTIELLE]':'[STANDARD]'} Séjours – ${state.type}`;window.location.href=`mailto:magangabridge@gmail.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(buildTxt())}`;}
 document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s)));render(1);});
 </script>
 </body>
