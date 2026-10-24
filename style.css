@@ -1,16 +1,7 @@
 :root{
---navy:#0B1F3A;
---navy-light:#143157;
---gold:#C9A86A;
---gold-hover:#B8935A;
---gold-light:#E9D9B8;
---cream:#FFFBF3;
---cream2:#F6F1E7;
---paper:#FFFEFB;
---text:#151B2B;
---muted:#6B7286;
---border:rgba(11,31,58,0.08);
---border-gold:rgba(201,168,106,0.22);
+--navy:#0B1F3A;--navy-light:#143157;--gold:#C9A86A;--gold-hover:#B8935A;
+--gold-light:#E9D9B8;--cream:#FFFBF3;--cream2:#F6F1E7;--paper:#FFFEFB;
+--text:#151B2B;--muted:#6B7286;--border:rgba(11,31,58,0.08);--border-gold:rgba(201,168,106,0.22);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -21,7 +12,7 @@ img{width:100%;display:block;object-fit:cover}
 .container{max-width:1280px;margin:0 auto;padding:0 32px}
 .badge-demo{display:inline-block;background:rgba(201,168,106,0.12);border:1px solid var(--border-gold);color:var(--gold-hover);padding:4px 10px;border-radius:100px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
 
-/* HEADER - referencia 1 */
+/* HEADER */
 .top-header{background:var(--cream2);border-bottom:1px solid var(--border);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-icon{width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Cormorant Garamond';font-size:18px}
@@ -31,7 +22,7 @@ img{width:100%;display:block;object-fit:cover}
 .nav a:hover{opacity:1}
 .btn-contact{border:1px solid var(--border-gold);padding:10px 22px;border-radius:100px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--navy)}
 
-/* HERO - split azul marino / imagen */
+/* HERO */
 .hero{display:grid;grid-template-columns:1fr 1.15fr;min-height:78vh;overflow:hidden}
 .hero-left{background:var(--navy);color:white;padding:80px 56px;display:flex;flex-direction:column;justify-content:center}
 .hero-left h1{font-size:64px;line-height:0.95;font-weight:500;margin-bottom:16px}
@@ -45,46 +36,64 @@ img{width:100%;display:block;object-fit:cover}
 .hero-right{position:relative;background:#ddd}
 .hero-right img{height:100%;min-height:580px}
 
-/* NOS SERVICES 3 columnas con iconos */
+/* NOS SERVICES */
 .services-intro{background:var(--cream);padding:72px 0 40px;text-align:center;border-bottom:1px solid var(--border)}
 .services-intro small{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:8px}
 .services-intro h2{font-size:15px;letter-spacing:0.02em;font-weight:500;font-family:'Instrument Sans'}
 .services-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1100px;margin:40px auto 0;border-top:1px solid var(--border)}
 .svc3{padding:40px 32px;text-align:center;border-right:1px solid var(--border)}
 .svc3:last-child{border-right:none}
-.svc3 .icon{width:52px;height:52px;margin:0 auto 20px;border:1px solid var(--border-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:22px}
 .svc3 h3{font-size:18px;margin-bottom:12px;color:var(--navy)}
 .svc3 p{font-size:13px;color:var(--muted);line-height:1.6;max-width:300px;margin:0 auto}
 
-/* SERVICE CARDS - referencia 2 div Quintessentially */
+/* Tus iconos */
+.svc3 .icon img{width:28px;height:28px;object-fit:contain;filter: brightness(0) saturate(100%);opacity:0.9}
+.svc3 .icon{background:white;border:1px solid var(--border-gold);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;transition:.2s}
+.svc3:hover .icon{border-color:var(--gold);background:var(--cream2);transform:scale(1.05)}
+
+/* SERVICE CARDS - FIX CENTRADO */
 .section-cards{background:var(--cream2);padding:80px 0}
-.section-header{max-width:1280px;margin:0 auto 40px;padding:0 32px}
+.section-header{max-width:1280px;margin:0 auto 32px;padding:0 32px;text-align:center}
 .section-header h2{font-size:42px;line-height:1.05;color:var(--navy);margin-bottom:12px}
-.section-header p{color:var(--muted);font-size:14px;max-width:600px}
-.cards-scroll{display:flex;gap:24px;overflow-x:auto;padding:10px 32px 30px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.section-header p{color:var(--muted);font-size:14px;max-width:600px;margin:0 auto}
+.cards-wrapper{max-width:1280px;margin:0 auto;padding:0 32px;display:flex;justify-content:center}
+.cards-scroll{display:flex;gap:24px;overflow-x:auto;padding:10px 0 30px;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:100%}
+.cards-scroll.is-centered{justify-content:center;overflow:visible;flex-wrap:wrap}
 .cards-scroll::-webkit-scrollbar{display:none}
-.q-card{flex:0 0 360px;scroll-snap-align:start;background:white;border-radius:0;border:1px solid var(--border);overflow:hidden;transition:.3s;cursor:pointer}
+.q-card{flex:0 0 360px;scroll-snap-align:start;background:white;border:1px solid var(--border);overflow:hidden;transition:.3s;cursor:pointer;border-radius:12px}
 .q-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(11,31,58,0.08)}
-.q-card-img{height:380px;position:relative;overflow:hidden;background:var(--navy)}
+.q-card-img{height:380px;overflow:hidden;background:var(--navy)}
 .q-card-img img{height:100%;transition:.6s}
 .q-card:hover .q-card-img img{transform:scale(1.05)}
 .q-card-body{padding:28px 24px 24px}
 .q-card-body h3{font-size:26px;line-height:1.1;margin-bottom:14px}
-.q-card-body p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:22px;min-height:72px}
-.q-btn{width:100%;background:var(--text);color:white;border:none;padding:14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
-.q-btn:hover{background:var(--navy-light)}
+.q-card-body p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:22px;min-height:60px}
+.q-btn{width:100%;background:var(--text);color:white;border:none;padding:14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer}
 
-/* TARIFS */
-.pricing-section{background:var(--navy);color:white;padding:90px 0}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:48px auto 0}
-.price-card{background:white;color:var(--text);border-radius:12px;padding:32px;border:1px solid var(--border)}
-.price-card.featured{background:var(--cream);border:1px solid var(--gold);transform:scale(1.03)}
-.price-card h4{font-family:'Cormorant Garamond';font-size:28px}
-.price{font-family:'Cormorant Garamond';font-size:38px;font-weight:600;margin:16px 0}
-.price small{font-family:'Instrument Sans';font-size:12px;color:var(--muted)}
-.price-list{list-style:none;margin:20px 0;display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--muted)}
-.price-list li{display:flex;gap:8px}
-.price-list li:before{content:'✓';color:var(--gold);font-weight:700}
+/* ABONNEMENTS */
+.abonnements-section{background:var(--navy);color:white;padding:90px 0}
+.abonnement-intro{text-align:center;max-width:720px;margin:0 auto 48px}
+.abonnement-intro small{letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-light);font-weight:600;font-size:11px}
+.abonnement-intro h2{font-size:44px;margin:12px 0;color:white;line-height:1.05}
+.abonnement-intro p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.6}
+.abonnement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.abonnement-card{background:white;color:var(--text);border-radius:16px;padding:28px;border:1px solid var(--border);display:flex;flex-direction:column}
+.abonnement-card.featured{background:var(--cream);border:2px solid var(--gold);transform:scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
+.abonnement-top{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:20px}
+.badge-abonnement{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;background:var(--navy);color:white;padding:4px 10px;border-radius:100px}
+.badge-abonnement.gold{background:var(--gold);color:var(--navy)}
+.badge-abonnement.dark{background:var(--text)}
+.abonnement-card h3{font-family:'Cormorant Garamond';font-size:30px;margin:12px 0 4px;color:var(--navy)}
+.price-abonnement{font-family:'Cormorant Garamond';font-size:36px;font-weight:600}
+.price-abonnement small{font-family:'Instrument Sans';font-size:12px;color:var(--muted)}
+.abonnement-list{list-style:none;margin:0 0 20px;display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--muted)}
+.abonnement-list li:before{content:'✓';color:var(--gold);font-weight:700;margin-right:8px}
+.btn-info{width:100%;background:transparent;border:1px solid var(--border);padding:12px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:12px}
+.info-extra{display:none;background:var(--cream2);padding:14px;border-radius:10px;font-size:12.5px;line-height:1.5;margin-bottom:16px;color:var(--muted)}
+.btn-whatsapp{width:100%;background:var(--text);color:white;border:none;padding:14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;margin-top:auto}
+.btn-whatsapp:hover{background:var(--navy-light)}
+.abonnement-cta-final{text-align:center;margin-top:64px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:16px;max-width:700px;margin:0 auto}
+.btn-gold-large{background:var(--gold);color:var(--navy);padding:16px 32px;border-radius:100px;border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:16px}
 
 /* CONFIGURATEUR */
 .config-wrap{max-width:1000px;margin:60px auto;background:white;border-radius:20px;border:1px solid var(--border);overflow:hidden}
@@ -98,40 +107,23 @@ img{width:100%;display:block;object-fit:cover}
 .opt img{width:72px;height:72px;border-radius:10px}
 
 /* FOOTER */
-.footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:48px 40px 24px;font-size:12px}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;max-width:1280px;margin:0 auto}
-.footer h4{color:white;font-family:'Cormorant Garamond';font-size:18px;margin-bottom:16px}
-.footer a{display:block;line-height:2;color:rgba(255,255,255,0.6)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;opacity:.5;font-size:11px;max-width:1280px;margin:0 auto}
+.footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:32px 40px;font-size:12px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;opacity:.7;font-size:11px;max-width:1280px;margin:0 auto;flex-wrap:wrap;gap:12px}
 
+/* RESPONSIVE */
 @media(max-width:1024px){
 .hero{grid-template-columns:1fr}.hero-left{padding:48px 32px}.hero-right img{min-height:420px}
-.services-grid-3{grid-template-columns:1fr}.svc3{border-right:none;border-bottom:1px solid var(--border)}
-.price-grid{grid-template-columns:1fr}.price-card.featured{transform:none}
-.footer-grid{grid-template-columns:1fr 1fr}.nav{display:none}
+.services-grid-3{grid-template-columns:1fr;border-top:none}.svc3{border-right:none;border-bottom:1px solid var(--border)}
+.abonnement-grid{grid-template-columns:1fr}.abonnement-card.featured{transform:none}
+.cards-wrapper{padding:0 16px}
+.cards-scroll{justify-content:flex-start!important;overflow-x:auto;flex-wrap:nowrap!important}
+.q-card{flex:0 0 85vw}
+.nav{display:none}
+.top-header{padding:12px 20px}
+.container{padding:0 20px}
 }
-
-/* Tus iconos personalizados */
-.svc3 .icon img{
-  width:28px;
-  height:28px;
-  object-fit:contain;
-  filter: brightness(0) saturate(100%); /* los deja en negro puro */
-  opacity:0.9;
-}
-.svc3 .icon{
-  background:white;
-  border:1px solid var(--border-gold);
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.svc3:hover .icon{
-  border-color:var(--gold);
-  background:var(--cream2);
-  transform:scale(1.05);
-  transition:.2s;
+@media(max-width:640px){
+.abonnement-intro h2{font-size:32px}
+.hero-left h1{font-size:42px}
+.price-abonnement{font-size:30px}
 }
