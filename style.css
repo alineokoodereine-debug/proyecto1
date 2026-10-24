@@ -30,7 +30,7 @@ img{width:100%;display:block;object-fit:cover}
 .btn-outline{border:1px solid rgba(255,255,255,0.25);color:white;padding:13px 26px;border-radius:8px;font-size:13px;background:transparent;cursor:pointer}
 .hero-loc{margin-top:36px;font-size:11px;letter-spacing:0.08em;color:var(--gold-light);opacity:.8}
 .hero-right{position:relative;background:#ddd}
-.hero-right img{height:100%;min-height:580px}
+.hero-right img{height:100%;min-height:580px;object-fit:cover}
 .services-intro{background:var(--cream);padding:72px 0 40px;text-align:center;border-bottom:1px solid var(--border)}
 .services-intro small{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:8px}
 .services-intro h2{font-size:15px;letter-spacing:0.02em;font-weight:500;font-family:'Instrument Sans'}
@@ -59,14 +59,16 @@ img{width:100%;display:block;object-fit:cover}
 .q-card-body h3{font-size:26px;line-height:1.1;margin-bottom:14px}
 .q-card-body p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:22px;min-height:60px}
 .q-btn{width:100%;background:var(--text);color:white;border:none;padding:14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer}
-.abonnements-section{background:var(--navy);color:white;padding:90px 0}
+
+/* ABONNEMENTS - FIX CHOQUE APLICADO AQUÍ */
+.abonnements-section{background:var(--navy);color:white;padding:90px 0 110px}
 .abonnement-intro{text-align:center;max-width:720px;margin:0 auto 48px}
 .abonnement-intro small{letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-light);font-weight:600;font-size:11px;display:block;margin-bottom:8px}
 .abonnement-intro h2{font-size:44px;margin:12px 0;color:white;line-height:1.05}
 .abonnement-intro p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.6}
-.abonnement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.abonnement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;row-gap:40px;max-width:1100px;margin:0 auto 64px}
 .abonnement-card{background:white;color:var(--text);border-radius:16px;padding:28px;border:1px solid var(--border);display:flex;flex-direction:column}
-.abonnement-card.featured{background:var(--cream);border:2px solid var(--gold);transform:scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
+.abonnement-card.featured{background:var(--cream);border:2px solid var(--gold);transform:none !important;box-shadow:0 20px 40px rgba(0,0,0,0.15);margin-bottom:8px}
 .abonnement-top{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:20px}
 .badge-abonnement{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;background:var(--navy);color:white;padding:4px 10px;border-radius:100px;display:inline-block}
 .badge-abonnement.gold{background:var(--gold);color:var(--navy)}
@@ -81,9 +83,10 @@ img{width:100%;display:block;object-fit:cover}
 .info-extra{display:none;background:var(--cream2);padding:14px;border-radius:10px;font-size:12.5px;line-height:1.5;margin-bottom:16px;color:var(--muted)}
 .btn-whatsapp{width:100%;background:var(--text);color:white;border:none;padding:14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;margin-top:auto}
 .btn-whatsapp:hover{background:var(--navy-light)}
-.abonnement-cta-final{text-align:center;margin-top:64px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:16px;max-width:700px;margin:0 auto}
+.abonnement-cta-final{text-align:center;margin-top:96px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:16px;max-width:700px;margin-left:auto;margin-right:auto}
 .abonnement-cta-final h3{font-size:28px;color:white;margin-bottom:8px}
 .btn-gold-large{background:var(--gold);color:var(--navy);padding:16px 32px;border-radius:100px;border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:16px}
+
 .config-wrap{max-width:1000px;margin:60px auto;background:white;border-radius:20px;border:1px solid var(--border);overflow:hidden}
 .config-tabs{display:flex;border-bottom:1px solid var(--border)}
 .config-tabs button{flex:1;padding:18px;border:none;background:transparent;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--muted);cursor:pointer;border-right:1px solid var(--border)}
