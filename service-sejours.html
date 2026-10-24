@@ -1,1 +1,29 @@
-
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séjours – L’Adresse SARL</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top-header"><div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div><a class="btn-contact" href="index.html">← Retour Accueil</a></header>
+<section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Exclusive access – Séjours</h1><div class="hero-sub">Appartements Premium & Villas démo – disponibilité à confirmer</div><p class="hero-desc">Accueil aéroport dès 25.000 FCFA. Commission hôtels 10-20%, villas 15%. L’Adresse intermédiaire, obligation de moyens.</p></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"></div></section>
+<section style="padding:80px 0;background:var(--cream)" id="config"><div class="container"><div class="config-wrap"><div class="config-tabs"><button class="active" data-s="1">1. Type</button><button data-s="2">2. Hébergement</button><button data-s="3">3. Options</button><button data-s="4">4. Résumé</button></div><div class="config-body" id="cfgBody"></div></div></div></section>
+<footer class="footer"><div class="footer-bottom"><span>© 2026 L’Adresse SARL – Glass</span><span>WhatsApp: +241 62 51 64 57</span></div></footer>
+<script>
+const state={type:null,heberg:null,services:[]};
+const hebs=[{id:'a1',name:'Appartement Premium – Démo',cap:'2 pers • 65m²',img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},{id:'v1',name:'Villa Luxe – Démo non gérée',cap:'4-6 pers',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400'}];
+const servs=['Accueil aéroport 25.000 FCFA','Chef privé','Ménage quotidien','Sécurité sur devis'];
+function render(n){document.querySelectorAll('.config-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.s==n));const body=document.getElementById('cfgBody');
+if(n==1){body.innerHTML=`<div class="config-grid">${['Courte','Prolongée','Business','Personnalisée'].map(t=>`<div class="opt ${state.type===t?'selected':''}" onclick="state.type='${t}';render(1)"><b>${t}</b></div>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(2)">Continuer →</button></div>`;}
+if(n==2){body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt ${state.heberg===h.id?'selected':''}" onclick="state.heberg='${h.id}';render(2)"><img src="${h.img}"><div><b>${h.name}</b><br><small>${h.cap}</small></div></div>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" onclick="render(1)">← Retour</button><button class="btn-gold" onclick="render(3)">Continuer →</button></div>`;}
+if(n==3){body.innerHTML=`<div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s}')">${s}</label>`).join('')}</div><div style="text-align:right;margin-top:20px"><button class="btn-gold" onclick="render(4)">Voir résumé →</button></div>`;}
+if(n==4){const heb=hebs.find(h=>h.id===state.heberg);body.innerHTML=`<p><b>Type:</b> ${state.type||'—'}<br><b>Hébergement:</b> ${heb?heb.name:'—'}<br><b>Options:</b> ${state.services.join(', ')||'—'}</p><button class="btn-gold" style="margin-top:20px;width:100%;border-radius:100px" onclick="sendWA()">Envoyer par WhatsApp</button><button class="btn-outline" style="margin-top:10px;width:100%;border-radius:100px;background:var(--navy);color:white;border:none;padding:14px" onclick="sendMail()">Envoyer par Gmail</button>`;}
+}
+function toggleS(s){if(state.services.includes(s))state.services=state.services.filter(x=>x!==s);else state.services.push(s);render(3)}
+function sendWA(){const txt=`Bonjour L’Adresse, demande SÉJOURS – Type:${state.type} – Heberg:${state.heberg} – Options:${state.services.join(',')}`;window.open(`https://wa.me/24162516457?text=${encodeURIComponent(txt)}`,'_blank')}
+function sendMail(){const subj=`Demande Séjours L’Adresse – ${state.type}`;const body=`Bonjour L’Adresse,%0D%0AType:${state.type}%0D%0AHébergement:${state.heberg}%0D%0AOptions:${state.services.join(',')}`;window.location.href=`mailto:magangabridge@gmail.com?subject=${subj}&body=${body}`}
+document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s)));render(1);
+</script>
+</body>
+</html>
