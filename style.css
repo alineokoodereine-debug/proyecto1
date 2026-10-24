@@ -5,9 +5,9 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Instrument Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Instrument Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 h1,h2,h3{font-family:'Cormorant Garamond',serif}
-a{text-decoration:none;color:inherit}
+a{text-decoration:none;color:inherit;-webkit-text-fill-color:inherit}
 img{width:100%;display:block;object-fit:cover}
 .container{max-width:1280px;margin:0 auto;padding:0 32px}
 .badge-demo{display:inline-block;background:rgba(201,168,106,0.12);border:1px solid var(--border-gold);color:var(--gold-hover);padding:4px 10px;border-radius:100px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
@@ -29,8 +29,8 @@ img{width:100%;display:block;object-fit:cover}
 .btn-gold:hover{background:var(--gold-hover);transform:translateY(-1px)}
 .btn-outline{border:1px solid rgba(255,255,255,0.25);color:white;padding:13px 26px;border-radius:8px;font-size:13px;background:transparent;cursor:pointer}
 .hero-loc{margin-top:36px;font-size:11px;letter-spacing:0.08em;color:var(--gold-light);opacity:.8}
-.hero-right{position:relative;background:#ddd}
-.hero-right img{height:100%;min-height:580px;object-fit:cover}
+.hero-right{position:relative;background:#ddd;display:block}
+.hero-right img{height:100%;min-height:580px;object-fit:cover;display:block}
 .services-intro{background:var(--cream);padding:72px 0 40px;text-align:center;border-bottom:1px solid var(--border)}
 .services-intro small{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:8px}
 .services-intro h2{font-size:15px;letter-spacing:0.02em;font-weight:500;font-family:'Instrument Sans'}
@@ -59,8 +59,6 @@ img{width:100%;display:block;object-fit:cover}
 .q-card-body h3{font-size:26px;line-height:1.1;margin-bottom:14px}
 .q-card-body p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:22px;min-height:60px}
 .q-btn{width:100%;background:var(--text);color:white;border:none;padding:14px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer}
-
-/* ABONNEMENTS - FIX CHOQUE APLICADO AQUÍ */
 .abonnements-section{background:var(--navy);color:white;padding:90px 0 110px}
 .abonnement-intro{text-align:center;max-width:720px;margin:0 auto 48px}
 .abonnement-intro small{letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-light);font-weight:600;font-size:11px;display:block;margin-bottom:8px}
@@ -86,18 +84,19 @@ img{width:100%;display:block;object-fit:cover}
 .abonnement-cta-final{text-align:center;margin-top:96px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:16px;max-width:700px;margin-left:auto;margin-right:auto}
 .abonnement-cta-final h3{font-size:28px;color:white;margin-bottom:8px}
 .btn-gold-large{background:var(--gold);color:var(--navy);padding:16px 32px;border-radius:100px;border:none;font-weight:700;font-size:14px;cursor:pointer;margin-top:16px}
-
-.config-wrap{max-width:1000px;margin:60px auto;background:white;border-radius:20px;border:1px solid var(--border);overflow:hidden}
-.config-tabs{display:flex;border-bottom:1px solid var(--border)}
+.config-wrap{max-width:1000px;margin:60px auto;background:white;border-radius:20px;border:1px solid var(--border);overflow:hidden;position:relative}
+.config-tabs{display:flex;border-bottom:1px solid var(--border);overflow:hidden}
 .config-tabs button{flex:1;padding:18px;border:none;background:transparent;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--muted);cursor:pointer;border-right:1px solid var(--border)}
 .config-tabs button.active{background:var(--navy);color:white}
 .config-body{padding:32px}
 .config-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.opt{border:1.5px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:.2s}
+.opt{border:1.5px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:.2s;background:white}
 .opt.selected{border-color:var(--navy);background:var(--cream2)}
-.opt img{width:72px;height:72px;border-radius:10px}
+.opt img{width:72px;height:72px;border-radius:10px;flex-shrink:0}
 .footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:32px 40px;font-size:12px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;opacity:.7;font-size:11px;max-width:1280px;margin:0 auto;flex-wrap:wrap;gap:12px}
+a[href^="tel"], a[href^="mailto"], .footer-bottom span{color:inherit !important;-webkit-text-fill-color:inherit !important;text-decoration:none !important}
+
 @media(max-width:1024px){
 .hero{grid-template-columns:1fr}.hero-left{padding:48px 32px}.hero-right img{min-height:420px}
 .services-grid-3{grid-template-columns:1fr;border-top:none}.svc3{border-right:none;border-bottom:1px solid var(--border)}
@@ -108,6 +107,25 @@ img{width:100%;display:block;object-fit:cover}
 .nav{display:none}
 .top-header{padding:12px 20px}
 .container{padding:0 20px}
+}
+
+@media(max-width:768px){
+.hero{display:flex !important;flex-direction:column !important;min-height:auto !important}
+.hero-left{padding:32px 20px !important;order:1}
+.hero-left h1{font-size:38px !important}
+.hero-right{order:2;width:100% !important;height:300px !important;min-height:300px !important;display:block !important;margin:0 !important;border-radius:0 !important}
+.hero-right img{height:100% !important;min-height:300px !important;width:100% !important;object-fit:cover !important}
+.config-wrap{margin:20px auto !important;border-radius:16px !important}
+.config-tabs{display:flex !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch !important;scrollbar-width:none !important}
+.config-tabs::-webkit-scrollbar{display:none !important}
+.config-tabs button{flex:0 0 44% !important;white-space:normal !important;line-height:1.2 !important;font-size:11px !important;padding:14px 10px !important;min-height:54px !important;display:flex !important;align-items:center !important;justify-content:center !important}
+.config-wrap::after{content:"← glissez pour voir →";position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);opacity:0.6;pointer-events:none;background:var(--cream);padding:2px 10px;border-radius:100px;border:1px solid var(--border)}
+.config-body{padding:16px !important;padding-bottom:32px !important}
+.config-grid{grid-template-columns:1fr !important;gap:12px !important}
+.config-grid .opt{width:100% !important;min-height:80px !important}
+.config-grid .opt img{width:62px !important;height:62px !important}
+.config-body input, .config-body select{font-size:16px !important}
+.config-body div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
 }
 @media(max-width:640px){
 .abonnement-intro h2{font-size:32px}
