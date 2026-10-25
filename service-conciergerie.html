@@ -40,4 +40,12 @@ function sendToSheet(src){fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:
 function sendWA(){if(isAutre()&&!document.getElementById('desc').value){alert('Précisez votre autre service');return;}sendToSheet('WhatsApp'); window.open(`https://wa.me/24162516457?text=${encodeURIComponent((state.conf==='confidentielle'?'[CONFIDENTIELLE] ':'')+buildTxt())}`,'_blank');}
 function sendMail(){if(isAutre()&&!document.getElementById('desc').value){alert('Précisez votre autre service');return;}sendToSheet('Gmail'); window.location.href=`mailto:magangabridge@gmail.com?subject=Conciergerie ${state.type}&body=${encodeURIComponent(buildTxt())}`;}
 document.addEventListener('DOMContentLoaded',async()=>{await loadPrix(); document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s))); render(1);});
-</script></body></html>
+</script>
+  <script>
+const burger=document.getElementById('burgerBtn');
+const nav=document.getElementById('mainNav');
+if(burger){burger.addEventListener('click',()=>{nav.classList.toggle('open'); burger.textContent=nav.classList.contains('open')?'✕':'☰';});}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open'); if(burger) burger.textContent='☰';}));
+</script>
+</body>
+</html>
