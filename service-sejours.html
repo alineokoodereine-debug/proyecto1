@@ -1,5 +1,21 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Séjours - L’Adresse SARL</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body><header class="top-header"><div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div><a class="btn-contact" href="index.html">← Retour</a></header>
+<body>
+  
+  <header class="top-header">
+  <div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div>
+  <nav class="nav" id="mainNav">
+    <a href="index.html#accueil">Accueil ·</a>
+    <a href="index.html#services">Services ·</a>
+    <a href="index.html#abonnements">Abonnements ·</a>
+    <a href="qui-sommes-nous.html">Qui sommes nous ·</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a class="btn-contact hide-mobile" href="index.html#abonnements">Abonnements</a>
+    <button class="burger" id="burgerBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+  
 <section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Exclusive access - Séjours</h1><div class="hero-sub">Appartements Premium & Villas démo - disponibilité à confirmer</div></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"></div></section>
 <section style="padding:80px 0;background:var(--cream)"><div class="container"><div class="config-wrap"><div class="config-tabs"><button class="active" data-s="1">1. Type</button><button data-s="2">2. Hébergement</button><button data-s="3">3. Personnaliser</button><button data-s="4">4. Demande</button></div><div class="config-body" id="cfgBody"></div></div></div></section>
 <script>
