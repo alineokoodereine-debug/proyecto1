@@ -9,5 +9,12 @@
 <section class="hero" style="min-height:55vh"><div class="hero-left"><small style="letter-spacing:0.28em;color:var(--gold-light);font-weight:600">QUI SOMMES NOUS</small><h1>L’art de l’hospitalité sur mesure</h1><div class="hero-sub">Votre temps, notre excellence.</div><p class="hero-desc">Basée à Glass, Libreville. Capital 2.000.000 FCFA. Gérante Mme NGUIANOUKOU TSONGO Tatiana Sandra. Un seul interlocuteur pour votre séjour.</p></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800"></div></section>
 <section style="padding:80px 0;background:var(--cream)"><div class="container" style="max-width:900px"><h2 style="font-size:42px;color:var(--navy)">Notre histoire</h2><p style="color:var(--muted);margin:16px 0 40px;line-height:1.7">L’Adresse SARL née de la volonté d’offrir à Libreville une conciergerie premium discrète et efficace. Nous organisons séjours, mobilité, chefs privés, guides et événements avec des partenaires agréés.</p><h2 style="font-size:32px;color:var(--navy)">Mission</h2><p style="color:var(--muted);margin:10px 0 30px">Offrir un seul interlocuteur, organisation complète, expérience sans compromis. Obligation de moyens.</p><h2 style="font-size:32px;color:var(--navy)">Vision</h2><p style="color:var(--muted);margin:10px 0 30px">Devenir L’Adresse de référence à Libreville et Port-Gentil pour une clientèle exigeante.</p><h2 style="font-size:32px;color:var(--navy)">Nos valeurs</h2><ul style="list-style:none;display:grid;gap:10px;margin-top:16px"><li>✓ Discrétion absolue</li><li>✓ Excellence opérationnelle</li><li>✓ Confidentialité renforcée - 2 Sheets séparés</li><li>✓ Partenaires agréés - 2 cliniques, 2 sécurités</li><li>✓ Transparence - prix Dès / Sur devis / Commission expliquée</li></ul></div></section>
 <footer class="footer"><div class="footer-bottom"><span>© 2026 L’Adresse SARL</span><span>Glass, Libreville</span></div></footer>
+<script>
+const burger=document.getElementById('burgerBtn');
+const nav=document.getElementById('mainNav');
+if(burger){burger.addEventListener('click',()=>{nav.classList.toggle('open'); burger.textContent=nav.classList.contains('open')?'✕':'☰';});}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open'); if(burger) burger.textContent='☰';}));
+</script>
+
 </body>
 </html>
