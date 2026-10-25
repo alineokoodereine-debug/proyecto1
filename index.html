@@ -58,4 +58,11 @@ async function loadAbos(){
  }catch(e){console.log(e)}
 }
 loadAbos();
-</script></body></html>
+</script>
+<script>
+const burger=document.getElementById('burgerBtn');
+const nav=document.getElementById('mainNav');
+if(burger){burger.addEventListener('click',()=>{nav.classList.toggle('open'); burger.textContent=nav.classList.contains('open')?'✕':'☰';});}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open'); if(burger) burger.textContent='☰';}));
+</script>
+</body></html>
