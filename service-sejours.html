@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Séjours - L’Adresse SARL</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
 <body>
-  
-  <header class="top-header">
+<header class="top-header">
   <div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div>
   <nav class="nav" id="mainNav">
     <a href="index.html#accueil">Accueil ·</a>
-    <a href="index.html#services">Services ·</a>
+    <a href="index.html#services-cards">Services ·</a>
     <a href="index.html#abonnements">Abonnements ·</a>
     <a href="qui-sommes-nous.html">Qui sommes nous ·</a>
     <a href="index.html#contact">Contact</a>
@@ -15,9 +14,9 @@
     <button class="burger" id="burgerBtn" aria-label="Menu">☰</button>
   </div>
 </header>
-  
 <section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Exclusive access - Séjours</h1><div class="hero-sub">Appartements Premium & Villas démo - disponibilité à confirmer</div></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"></div></section>
 <section style="padding:80px 0;background:var(--cream)"><div class="container"><div class="config-wrap"><div class="config-tabs"><button class="active" data-s="1">1. Type</button><button data-s="2">2. Hébergement</button><button data-s="3">3. Personnaliser</button><button data-s="4">4. Demande</button></div><div class="config-body" id="cfgBody"></div></div></div></section>
+<footer class="footer"><div class="footer-bottom"><span>© 2026 L’Adresse SARL</span><span>Glass – Libreville – Confidentiel 🔒 sur 2e Sheet</span></div></footer>
 <script>
 const SHEET_URL="https://script.google.com/macros/s/AKfycbww-7Nn7ro4OZ-R1oVuoLSdY6P7OWOHJzLl0I4KNazjOXjGYWlmxFzpq-ti7sHGA2zP/exec";
 const state={type:null,heberg:null,services:[],conf:'standard',budget:'proposition',budgetVal:'',nom:'',tel:'',membres:'',voiture:'',desc:''};
@@ -34,7 +33,7 @@ if(n==2){body.innerHTML=`<div class="config-grid">${hebs.map(h=>`<div class="opt
 if(n==3){body.innerHTML=`<div style="background:#f7f3ef;padding:12px;border-radius:10px;margin-bottom:16px;font-size:13px"><b>${state.type} • ${hebs.find(h=>h.id===state.heberg)?.name||''}</b> – Personnalisez</div><div class="config-grid">${servs.map(s=>`<label class="opt ${state.services.includes(s)?'selected':''}"><input type="checkbox" ${state.services.includes(s)?'checked':''} onchange="toggleS('${s.replace(/'/g,"\\'")}')">${s}</label>`).join('')}</div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn-gold" style="background:transparent;color:var(--navy);border:1px solid var(--border)" onclick="render(2)">← Retour</button><button class="btn-gold" onclick="render(4)">Demande →</button></div>`;}
 if(n==4){
 const heb=hebs.find(h=>h.id===state.heberg);
-let html=`<div style="background:#f7f3ef;padding:12px;border-radius:10px;margin-bottom:10px"><b>${state.type||'—'} • ${heb?heb.name:'—'} • ${state.services.join(', ')||'—'}</b></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0"><label class="opt ${state.conf==='standard'?'selected':''}" onclick="state.conf='standard';render(4)"><input type="radio" ${state.conf==='standard'?'checked':''}> Standard</label><label class="opt ${state.conf==='confidentielle'?'selected':''}" onclick="state.conf='confidentielle';render(4)"><input type="radio" ${state.conf==='confidentielle'?'checked':''}> Confidentielle</label></div>`;
+let html=`<div style="background:#f7f3ef;padding:12px;border-radius:10px;margin-bottom:10px"><b>${state.type||'—'} • ${heb?heb.name:'—'} • ${state.services.join(', ')||'—'}</b></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0"><label class="opt ${state.conf==='standard'?'selected':''}" onclick="state.conf='standard';render(4)"><input type="radio" ${state.conf==='standard'?'checked':''}> Standard</label><label class="opt ${state.conf==='confidentielle'?'selected':''}" onclick="state.conf='confidentielle';render(4)"><input type="radio" ${state.conf==='confidentielle'?'checked':''}> Confidentielle 🔒</label></div>`;
 html+= state.conf==='standard'?`<input id="nom" placeholder="Nom" value="${state.nom}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px"><input id="tel" placeholder="Téléphone" value="${state.tel}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px"><input id="membres" placeholder="Voyageurs" value="${state.membres}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px">`:`<input id="tel" placeholder="Téléphone" value="${state.tel}" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-bottom:10px">`;
 if(hasVoiture()){html+=`<select id="voiture" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);margin-top:10px"><option>Sélectionnez véhicule</option>${prixVoitures.map(v=>`<option>${v.nom} – ${v.prix} ${v.unite}</option>`).join('')}</select>`;}
 if(state.services.includes('Autre besoin – Expliquez-nous')){html+=`<textarea id="desc" placeholder="Expliquez votre besoin..." style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);min-height:80px;margin-top:10px">${state.desc}</textarea>`;}
@@ -49,7 +48,7 @@ function sendWA(){sendToSheet('WhatsApp'); window.open(`https://wa.me/2416251645
 function sendMail(){sendToSheet('Gmail'); window.location.href=`mailto:magangabridge@gmail.com?subject=Séjours ${state.type}&body=${encodeURIComponent(buildTxt())}`;}
 document.addEventListener('DOMContentLoaded',async()=>{await loadPrix(); document.querySelectorAll('.config-tabs button').forEach(b=>b.addEventListener('click',()=>render(b.dataset.s))); render(1);});
 </script>
-  <script>
+<script>
 const burger=document.getElementById('burgerBtn');
 const nav=document.getElementById('mainNav');
 if(burger){burger.addEventListener('click',()=>{nav.classList.toggle('open'); burger.textContent=nav.classList.contains('open')?'✕':'☰';});}
