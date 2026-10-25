@@ -6,8 +6,23 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top-header"><div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div><a class="btn-contact" href="index.html">← Retour Accueil</a></header>
-<section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Conciergerie personnalisée</h1><div class="hero-sub">Quotidien, Business ou Événement – Glass, Libreville</div></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800"></div></section>
+  
+<header class="top-header">
+  <div class="brand"><div class="brand-icon">L</div><div class="brand-name">L’ADRESSE SARL</div></div>
+  <nav class="nav" id="mainNav">
+    <a href="index.html#accueil">Accueil ·</a>
+    <a href="index.html#services">Services ·</a>
+    <a href="index.html#abonnements">Abonnements ·</a>
+    <a href="qui-sommes-nous.html">Qui sommes nous ·</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a class="btn-contact hide-mobile" href="index.html#abonnements">Abonnements</a>
+    <button class="burger" id="burgerBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+  <section class="hero" style="min-height:45vh"><div class="hero-left"><h1>Conciergerie personnalisée</h1><div class="hero-sub">Quotidien, Business ou Événement – Glass, Libreville</div></div><div class="hero-right"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800"></div></section>
 <section style="padding:80px 0;background:var(--cream)"><div class="container"><div class="config-wrap"><div class="config-tabs"><button class="active" data-s="1">1. Besoin</button><button data-s="2">2. Personnaliser</button><button data-s="3">3. Demande</button></div><div class="config-body" id="cfgBody"></div></div></div></section>
 <script>
 const SHEET_URL="https://script.google.com/macros/s/AKfycbww-7Nn7ro4OZ-R1oVuoLSdY6P7OWOHJzLl0I4KNazjOXjGYWlmxFzpq-ti7sHGA2zP/exec";
