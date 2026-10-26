@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body>\n  <div class="demo-ribbon" role="note">VERSION DÉMO · Données fictives · Aucun formulaire n’est envoyé aux feuilles de production</div>
   <header class="top-header">
     <a class="brand" href="#accueil" aria-label="L’Adresse SARL — Accueil">
       <div class="brand-icon" aria-hidden="true">L</div>
@@ -58,42 +58,20 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="accueil">
-      <div class="hero-left">
-        <h1>Conciergerie de Luxe</h1>
-
-        <div class="hero-sub">
-          Votre temps, notre excellence.
-        </div>
-
-        <p class="hero-desc">
-          L’art de l’hospitalité sur mesure. Un seul interlocuteur,
-          une organisation complète, une expérience sans compromis.
-          Glass, Libreville.
-        </p>
-
-        <div class="hero-btns">
-          <a class="btn-gold" href="#services-cards">
-            Demander une réservation
-          </a>
-
-          <a class="btn-outline" href="#services">
-            Découvrir nos services
-          </a>
-        </div>
-
-        <div class="hero-loc">
-          Disponible à Libreville · Glass · Extension à Port-Gentil
-        </div>
-      </div>
-
+    <section class="hero hero-overlay" id="accueil" aria-label="Accueil L’Adresse SARL">
       <div class="hero-right">
-        <img
-          src="a1.jpeg"
-          alt="Univers et services de L’Adresse SARL"
-          fetchpriority="high"
-          onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='a1.jpg'}"
-        >
+        <img src="a1.jpg" alt="Atmosphère élégante pour l’hospitalité haut de gamme" fetchpriority="high">
+      </div>
+      <div class="hero-left">
+        <small class="hero-eyebrow">LIBREVILLE · GABON</small>
+        <h1>Conciergerie<br>de Luxe</h1>
+        <div class="hero-sub">Votre temps, notre excellence.</div>
+        <p class="hero-desc">L’art de l’hospitalité sur mesure. Un seul interlocuteur, une organisation complète, une expérience sans compromis.</p>
+        <div class="hero-btns">
+          <a class="btn-gold" href="#services-cards">Découvrir nos services</a>
+          <a class="btn-outline" href="https://wa.me/24162516457" target="_blank" rel="noopener noreferrer">Nous contacter</a>
+        </div>
+        <div class="hero-loc">Disponibilité selon demande · Discrétion · Accompagnement personnalisé</div>
       </div>
     </section>
 
@@ -258,6 +236,26 @@
             Chargement des abonnements...
           </p>
         </div>
+      </div>
+    </section>
+    <section class="editorial-section" aria-labelledby="actualites-title">
+      <div class="container">
+        <p class="section-kicker">Carnet de L’Adresse</p>
+        <h2 id="actualites-title">Actualités & inspirations</h2>
+        <p class="editorial-intro">Quelques idées pour préparer un séjour et découvrir le Gabon autrement.</p>
+        <div class="editorial-grid">
+          <article><span>DESTINATION</span><h3>Découvrir le Gabon autrement</h3><p>Une invitation à imaginer des expériences locales, entre nature, culture et hospitalité.</p><small>Article de démonstration</small></article>
+          <article><span>ART DE VIVRE</span><h3>L’art du service personnalisé</h3><p>Anticiper les détails, respecter les préférences et simplifier chaque étape du séjour.</p><small>Article de démonstration</small></article>
+          <article><span>VOYAGE PROFESSIONNEL</span><h3>Préparer un séjour business sans stress</h3><p>Coordonner les déplacements, l’hébergement et les besoins pratiques en amont.</p><small>Article de démonstration</small></article>
+        </div>
+      </div>
+    </section>
+    <section class="partners-strip">
+      <div class="container">
+        <p class="section-kicker">Un réseau à construire avec soin</p>
+        <h2>Nos partenaires</h2>
+        <p>Les logos et liens officiels seront ajoutés après validation par L’Adresse.</p>
+        <div class="partner-placeholders"><span>Partenaire à confirmer</span><span>Partenaire à confirmer</span><span>Partenaire à confirmer</span></div>
       </div>
     </section>
   </main>
@@ -499,57 +497,19 @@
     }
 
     async function loadAbos() {
-      abosGrid.setAttribute("aria-busy", "true");
-      setAbosStatus("Chargement des abonnements...");
-
-      try {
-        const response = await fetch(
-          SHEET_URL + "?type=abonnements",
-          {
-            method: "GET",
-            headers: {
-              "Accept": "application/json"
-            }
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Erreur HTTP : " + response.status);
-        }
-
-        const data = await response.json();
-
-        if (!Array.isArray(data)) {
-          throw new Error("Format de réponse inattendu.");
-        }
-
-        const activeAbos = data.filter(isActive);
-
-        if (!activeAbos.length) {
-          setAbosStatus(
-            "Aucun abonnement n’est disponible actuellement. Contactez-nous pour connaître les formules proposées."
-          );
-          return;
-        }
-
-        const fragment = document.createDocumentFragment();
-
-        activeAbos.forEach(abonnement => {
-          fragment.appendChild(createAbonnementCard(abonnement));
-        });
-
-        abosGrid.replaceChildren(fragment);
-
-      } catch (error) {
-        console.error("Impossible de charger les abonnements :", error);
-
-        setAbosStatus(
-          "Les abonnements ne peuvent pas être affichés pour le moment. Vous pouvez nous contacter sur WhatsApp pour obtenir les informations.",
-          true
-        );
-      } finally {
-        abosGrid.setAttribute("aria-busy", "false");
-      }
+      abosGrid.setAttribute("aria-busy", "false");
+      const demos = [
+        { nom: "Premium", prix: "75 000", periode: "mois", badge: "Essentiel", actif: "oui", "Fonctionnalités | Avantages": "Accompagnement personnalisé|Demandes prioritaires selon disponibilité|Conditions communiquées avant souscription" },
+        { nom: "Luxe", prix: "250 000", periode: "mois", badge: "Expérience renforcée", actif: "oui", "Fonctionnalités | Avantages": "Accompagnement dédié|Coordination de plusieurs prestations|Conditions communiquées avant souscription" },
+        { nom: "Prestige", prix: "750 000", periode: "mois", badge: "Exclusif", actif: "oui", "Fonctionnalités | Avantages": "Accompagnement haut de gamme|Coordination personnalisée|Conditions communiquées avant souscription" }
+      ];
+      abosGrid.replaceChildren();
+      const note = document.createElement("p");
+      note.className = "demo-note";
+      note.textContent = "DÉMONSTRATION — tarifs et avantages à confirmer par L’Adresse avant publication.";
+      note.style.gridColumn = "1 / -1";
+      abosGrid.appendChild(note);
+      demos.forEach(item => abosGrid.appendChild(createAbonnementCard(item)));
     }
 
     // Menu mobile

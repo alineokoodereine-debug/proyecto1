@@ -150,7 +150,7 @@
   </style>
 </head>
 
-<body>
+<body>\n  <div class="demo-ribbon" role="note">VERSION DÉMO · Vos essais restent locaux : aucun envoi réel vers WhatsApp, e-mail ou Google Sheets</div>
 
 <header class="top-header">
   <div class="brand">
@@ -384,14 +384,14 @@ function render(n) {
       </p>
 
       <div class="config-grid">
-        ${["Courte", "Prolongée", "Business", "Personnalisée"].map(type => `
+        ${["Courte", "Longue durée", "Business", "Personnalisée"].map(type => `
           <div class="opt choice-option ${state.type === type ? "selected" : ""}"
                data-type="${escapeHtml(type)}">
             <b>${escapeHtml(type)}</b>
             <p class="step-help" style="margin-bottom:0">
               ${
                 type === "Courte" ? "Pour un court séjour ou une escapade." :
-                type === "Prolongée" ? "Pour un séjour de plusieurs semaines ou plus." :
+                type === "Longue durée" ? "Pour un séjour de plusieurs semaines ou plus." :
                 type === "Business" ? "Pour un déplacement professionnel." :
                 "Une demande adaptée à vos besoins."
               }
@@ -598,7 +598,7 @@ function render(n) {
           <input type="radio" name="conf" value="confidentielle"
                  ${state.conf === "confidentielle" ? "checked" : ""}>
           <b>Confidentielle 🔒</b>
-          <br><small>Le nom et le nombre de voyageurs ne seront pas inclus dans le message.</small>
+          <br><small>Le nom et le nombre de voyageurs ne seront pas inclus dans la demande transmise.</small>
         </label>
       </div>
 
@@ -648,7 +648,7 @@ function render(n) {
         <label class="opt choice-option ${state.budget === "proposition" ? "selected" : ""}">
           <input type="radio" name="budget" value="proposition"
                  ${state.budget === "proposition" ? "checked" : ""}>
-          Sur mesure
+          Budget ouvert
         </label>
 
         <label class="opt choice-option ${state.budget === "avec" ? "selected" : ""}">
@@ -782,7 +782,7 @@ function validateRequest() {
   }
 
   if (state.budget === "avec" && !state.budgetVal.trim()) {
-    errors.push("Précisez votre budget ou choisissez « Sur mesure ».");
+    errors.push("Précisez votre budget ou choisissez « Budget ouvert ».");
   }
 
   if (
@@ -810,7 +810,7 @@ function buildTxt() {
     "Hébergement souhaité : " + (heb ? heb.name : "À confirmer"),
     "Date d’arrivée : " + state.dateArrivee,
     "Date de départ : " + state.dateDepart,
-    "Nombre de voyageurs : " + state.voyageurs,
+    "Nombre de voyageurs : " + (confidential ? "Non communiqué dans la demande confidentielle" : state.voyageurs),
     "Services complémentaires : " + (state.services.join(", ") || "Aucun"),
     "Traitement : " + (confidential ? "CONFIDENTIEL" : "STANDARD"),
     "Téléphone : " + state.tel
@@ -831,7 +831,7 @@ function buildTxt() {
 
   lines.push(
     "Budget : " +
-    (state.budget === "avec" ? state.budgetVal : "Sur mesure")
+    (state.budget === "avec" ? state.budgetVal : "Budget ouvert")
   );
 
   lines.push("");
@@ -851,7 +851,7 @@ function sendToSheet(source) {
     hebergement: getHeb()?.name || "",
     dateArrivee: state.dateArrivee,
     dateDepart: state.dateDepart,
-    voyageurs: state.voyageurs,
+    voyageurs: confidential ? "" : state.voyageurs,
     services: state.services.join(", "),
     conf: state.conf,
     nom: confidential ? "" : state.nom,
@@ -887,6 +887,11 @@ function submitRequest(source) {
   }
 
   errorBox.textContent = "";
+
+  if (true) {
+    window.alert("Démonstration uniquement : votre formulaire a été validé, mais aucune demande n’a été envoyée. Les coordonnées et les données de cet essai ne seront pas transmises.");
+    return;
+  }
 
   const message = buildTxt();
 

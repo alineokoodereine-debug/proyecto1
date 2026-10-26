@@ -62,7 +62,7 @@
 </style>
 </head>
 
-<body>
+<body>\n  <div class="demo-ribbon" role="note">VERSION DÉMO · Vos essais restent locaux : aucun envoi réel vers WhatsApp, e-mail ou Google Sheets</div>
 <header class="top-header">
   <div class="brand">
     <div class="brand-icon">L</div>
@@ -462,7 +462,7 @@ function render(step) {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <label class="opt ${state.budget === 'proposition' ? 'selected' : ''}">
           <input type="radio" name="budget" value="proposition" ${state.budget === 'proposition' ? 'checked' : ''}>
-          Sur mesure
+          Budget ouvert
         </label>
         <label class="opt ${state.budget === 'avec' ? 'selected' : ''}">
           <input type="radio" name="budget" value="avec" ${state.budget === 'avec' ? 'checked' : ''}>
@@ -575,7 +575,7 @@ Téléphone : ${state.tel}
 Personnes / foyer : ${state.conf === 'standard' ? state.membres : 'Non renseigné'}
 Préférence culinaire : ${state.prefCul === 'oui' ? state.cuisine : 'Non précisée'}
 Description : ${state.desc || 'Non précisée'}
-Budget : ${state.budget === 'avec' ? state.budgetVal : 'Sur mesure'}`;
+Budget : ${state.budget === 'avec' ? state.budgetVal : 'Budget ouvert'}`;
 }
 
 function sendToSheet(source) {
@@ -647,13 +647,17 @@ function sendRequest(source) {
   }
 
   if (state.budget === 'avec' && !state.budgetVal.trim()) {
-    setError('Veuillez indiquer votre budget ou choisir « Sur mesure ».');
+    setError('Veuillez indiquer votre budget ou choisir « Budget ouvert ».');
     return;
   }
 
   // Le champ piège doit rester vide. Le serveur doit aussi le vérifier.
   if (state.website.trim()) return;
 
+  window.alert("Démonstration uniquement : votre formulaire a été validé, mais aucune demande n’a été envoyée. Les coordonnées et les données de cet essai ne seront pas transmises.");
+  return;
+
+  // En production, l’envoi devra être activé après validation du backend.
   sendToSheet(source);
 
   const message =

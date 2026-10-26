@@ -148,7 +148,7 @@
   </style>
 </head>
 
-<body>
+<body>\n  <div class="demo-ribbon" role="note">VERSION DÉMO · Vos essais restent locaux : aucun envoi réel vers WhatsApp, e-mail ou Google Sheets</div>
 
 <header class="top-header">
   <div class="brand">
@@ -681,7 +681,7 @@ function render(n) {
         <label class="opt choice-option ${state.budget === "proposition" ? "selected" : ""}">
           <input type="radio" name="budget" value="proposition"
                  ${state.budget === "proposition" ? "checked" : ""}>
-          Sur mesure
+          Budget ouvert
         </label>
 
         <label class="opt choice-option ${state.budget === "avec" ? "selected" : ""}">
@@ -810,7 +810,7 @@ function validateRequest() {
   }
 
   if (state.budget === "avec" && !state.budgetVal.trim()) {
-    errors.push("Précisez votre budget ou sélectionnez « Sur mesure ».");
+    errors.push("Précisez votre budget ou sélectionnez « Budget ouvert ».");
   }
 
   if (state.services.includes("Autre besoin – Expliquez-nous") && !state.desc.trim()) {
@@ -853,7 +853,7 @@ function buildTxt() {
 
   lines.push(
     "Budget : " +
-    (state.budget === "avec" ? state.budgetVal : "Sur mesure")
+    (state.budget === "avec" ? state.budgetVal : "Budget ouvert")
   );
 
   if (prixIndicatifs) {
@@ -914,6 +914,11 @@ function submitRequest(source) {
   }
 
   errorBox.textContent = "";
+
+  if (true) {
+    window.alert("Démonstration uniquement : votre formulaire a été validé, mais aucune demande n’a été envoyée. Les coordonnées et les données de cet essai ne seront pas transmises.");
+    return;
+  }
 
   const message = buildTxt();
 
